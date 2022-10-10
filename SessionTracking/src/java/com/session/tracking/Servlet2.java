@@ -35,47 +35,40 @@ public class Servlet2 extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Servlet2</title>");            
+            out.println("<title>Servlet Servlet2</title>");
             out.println("</head>");
             out.println("<body>");
             //out.println("<h1>Servlet Servlet2 at " + request.getContextPath() + "</h1>");
-            
+
             //getting all the cookies / fetch all the cookies...
             Cookie[] cookies = request.getCookies();
-            
+
             //flag variable...
-            boolean f=false;//assume it by default
-            String name="";
-            
-            if (cookies== null) {
+            boolean f = false;//assume it by default
+            String name = "";
+
+            if (cookies == null) {
                 out.println("<h1>You are new user, go to home page and submit your name!</h1>");
                 return;
-            }
-            else{
-                for(Cookie c: cookies){//foreach loop...
-                    String cookieName =c.getName();
+            } else {
+                for (Cookie c : cookies) {//foreach loop...
+                    String cookieName = c.getName();
                     if (cookieName.equals("user_name")) {
-                        
-                        f=true;
-                        name=c.getValue();
+
+                        f = true;
+                        name = c.getValue();
                     }
                 }
             }
-            
+
             if (f) {
-                out.println("<h1> Hello "+name +", "+"Welcome back!</h1>");
-            }
-            else{
+                out.println("<h1> Hello " + name + ", " + "Welcome back!</h1>");
+            } else {
                 out.println("<h1>You are new user, go to home page and submit your name!</h1>");
             }
-            
-           
-            
-            
-            
-            
-            
-            
+
+
+            out.println("<a href='index.html'>Home</a>");
             out.println("</body>");
             out.println("</html>");
         }
